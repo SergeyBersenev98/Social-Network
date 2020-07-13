@@ -1,0 +1,14 @@
+.Leftbar {
+    grid-area: n;
+    background-color: aqua;
+
+}
+
+.active {
+  color:firebrick;
+  font-size: 25px
+}
+
+.Leftbar a {
+  text-decoration: none;
+}

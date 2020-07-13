@@ -1,0 +1,23 @@
+.chatsAndMassages {
+  display: grid;
+  grid-template-columns: 2fr 7fr;
+}
+
+.chat {
+  color: yellow;
+}
+
+.massages {
+  color:white;
+}
+
+.chat a {
+  color:aqua;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.active {
+  color: red;
+  font-size: 25px;
+}

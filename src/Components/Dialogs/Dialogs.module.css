@@ -1,0 +1,11 @@
+.chatsAndMassages {
+  display: grid;
+  grid-template-columns: 2fr 7fr;
+}
+
+.massages {
+  color:white;
+}
+
+
+
