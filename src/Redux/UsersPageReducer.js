@@ -3,12 +3,14 @@ const CHANGE_FOLLOWING = "CHANGE-FOLLOWING";
 const SET_USERS = "SET-USERS";
 const SET_CURRENT_PAGE = "SET-CURRENT-PAGE";
 const USERS_QUANTITY = "USERS-QUANTITY";
+const IS_LOADING = "IS-LOADING"
 
 let initialState = {
   users : [],
   currentPage : 1,
   usersQuantity : 0,
   usersInPage: 5,
+  isLoading : false
       }
 
 let UsersPageReducer = (state = initialState, action) => {
@@ -17,7 +19,7 @@ let UsersPageReducer = (state = initialState, action) => {
     let stateCopy = {...state, users: state.users.map( u => {
       if (u.id == action.id){
        return {...u, followed: !u.followed}
-      }else{    
+      }else{  
       return u}})}
      return stateCopy
      }
@@ -33,39 +35,48 @@ let UsersPageReducer = (state = initialState, action) => {
        let stateCopy = {...state, usersQuantity: action.quantity}
        return stateCopy
      }
+     case IS_LOADING : {
+       let stateCopy = {...state, isLoading: !state.isLoading}
+       return stateCopy
+     }
      default:
        return state;
       
-    }
+    } 
  }
 
 export default UsersPageReducer;
 
-export const changeFollowingStatusAC = (id) => {
+export const changeFollowingStatus = (id) => {
   return {
     type: CHANGE_FOLLOWING,
     id: id,
     }
   }
 
-export const setUsersAC = (users) => {
+export const setUsers = (users) => {
  return {
    type: SET_USERS,
    users: users
  } 
 }
 
-export const setCurrentPageAC = (number) => {
+export const setCurrentPage = (number) => {
   return {
     type: SET_CURRENT_PAGE,
     number: number
   }
 }
 
-export const usersQuantityAC = (quantity) => {
-  debugger;
+export const usersQuantity = (quantity) => {
   return {
     type: USERS_QUANTITY,
     quantity: quantity,
     }
   }
+
+export const isLoading = (loading) => {
+  return {
+    type: IS_LOADING,  
+  }
+}
