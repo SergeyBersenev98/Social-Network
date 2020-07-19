@@ -3,14 +3,11 @@ import classes from './Profile.module.css'
 
 import ProfileInfo from './ProfileInfo/ProfileInfo.jsx'
 import ToWritePostContainer from './Posts/ToWritePost/ToWritePostContainer.jsx'
-import ProfileContainerAPI from './ProfileContainer.jsx'
+import URLProfileContainer from './ProfileContainer.jsx'
 
 
 
-const Profile = (props) => {
-  debugger; 
-      
-     
+const Profile = (props) => {  
   return(
       <div className={classes.profile}>
         <div>

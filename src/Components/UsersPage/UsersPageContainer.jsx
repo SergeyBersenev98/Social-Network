@@ -16,10 +16,12 @@ class UsersPageAPI extends React.Component {
   
   componentDidMount() {
     this.props.isLoading('startLoading')
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.state.currentPage}&count=${this.props.state.usersInPage}`).then(response => {
-     this.props.isLoading('stopLoading')
-      this.props.setUsers(response.data.items)
-      this.props.usersQuantity(response.data.totalCount)
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.state.currentPage}&count=${this.props.state.usersInPage}`, 
+             {withCredentials: true})
+      .then(response => {
+               this.props.isLoading('stopLoading')
+                this.props.setUsers(response.data.items)
+                this.props.usersQuantity(response.data.totalCount)
                         }
            )
     }
@@ -28,9 +30,11 @@ class UsersPageAPI extends React.Component {
   onPageChanged = (page) => {
     this.props.isLoading('startLoading')
     this.props.setCurrentPage(page)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.state.usersInPage} `).then(response => 
-             {this.props.isLoading('stopLoading')    
-              this.props.setUsers(response.data.items)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.state.usersInPage}`, 
+                 {withCredentials: true})
+          .then(response => 
+                       {this.props.isLoading('stopLoading')    
+                        this.props.setUsers(response.data.items)
                             }
                )
   }

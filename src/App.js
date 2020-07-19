@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Header from './Components/Header/Header.jsx'
+import HeaderContainer from './Components/Header/HeaderContainer.jsx'
 import Leftbar from './Components/Leftbar/Leftbar.jsx'
 import ProfileContainer from './Components/Content/ProfileContainer.jsx'
 import UsersPageContainer from './Components/UsersPage/UsersPageContainer.jsx'
@@ -12,14 +12,13 @@ import {BrowserRouter, Route} from 'react-router-dom'
 
 
 
-const  App = (props) => { 
-  debugger
+const  App = (props) => { //21 str /:userId - it's mean 'url parametr'     '?' - it's mean? that parametr is not nessecary
   return (
     <div className="app-wrapper">
-      <Header />
+      <HeaderContainer />
       <Leftbar />
       <div className="content">
-        <Route path = '/profile' render = {()=> <ProfileContainer />}/>
+        <Route path = '/profile/:userId?' render = {()=> <ProfileContainer />}/> 
         <Route path = '/dialogs' render = {()=> <DialogsContainer />}/>
         <Route path = '/usersPage' render = {()=> <UsersPageContainer />}/>
       </div>  

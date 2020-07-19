@@ -5,23 +5,22 @@ import * as axios from 'axios'
 import Loading from '../Common/loading.jsx'
 import {allInfoAboutUserAC} from '../../Redux/ProfileReducer.js'
 import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
 
 class ProfileContainerAPI extends React.Component {
-    constructor (props) {
+  constructor (props) {
   super (props)
   }
-componentDidMount() {
-  debugger
-    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`).then(response => {
+  
+  componentDidMount() {
+  let userId = this.props.match.params.userId //standart path for getting end of URL
+  if (!userId) {userId=2}
+    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId).then(response => {
       this.props.allInfoAboutUserAC(response.data)
                         }
            )
 }  
-  
-  
-  
   render () {
-     debugger
     return (   
       <Profile {...this.props} profile={this.props.profile} />
     )
@@ -34,9 +33,8 @@ let f1 = (state) => {
   }
 }
 
+let URLProfileContainer = withRouter(ProfileContainerAPI)
 
-
-const ProfileContainer = connect(f1, {allInfoAboutUserAC})(ProfileContainerAPI);
-
-export default ProfileContainer;
+export default connect(f1, {allInfoAboutUserAC})(URLProfileContainer);
+ 
 

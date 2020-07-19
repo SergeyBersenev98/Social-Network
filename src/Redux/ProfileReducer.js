@@ -19,7 +19,6 @@ let ProfileReducer = (state = initialState, action) => {
       
     case SERVER_NEW_POST : {
       let basicPost = { text: action.postFromUser }; 
-      debugger;
       return {
         ...state, 
         NewPostText : "",
@@ -33,9 +32,7 @@ let ProfileReducer = (state = initialState, action) => {
       }
       
       case ALL_INFO_ABOUT_USER : {
-        debugger
-        let stateCopy = {...state, Profile: action.profile}//p/P?
-        debugger
+        let stateCopy = {...state, Profile: action.profile}
         return stateCopy
       }
       

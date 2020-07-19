@@ -5,7 +5,6 @@ const ProfileInfo = (props) => {
   if (props.profile === " ") {
     return <></>
   } else { 
-    debugger
     return(
     <div className={classes.content}>
       <img src= {props.profile.photos.large}></img>

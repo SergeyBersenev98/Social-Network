@@ -1,11 +1,14 @@
 import React from 'react';   
 import classes from './UsersPage.module.css'
 import {NavLink} from 'react-router-dom'
+import * as axios from 'axios' 
 
 let UsersPage = (props) => {
 
   let FollowingStatus = (value) => {
-    props.changeFollowingStatus(value.target.value)
+    debugger;
+    props.changeFollowingStatus(value)
+    debugger
   } 
   
   let pagesArray = []
@@ -27,7 +30,7 @@ let UsersPage = (props) => {
           </div>
     
     {props.users.map( u => {return <div className = {classes.usersPage}>
-      <NavLink to = '/profile'>
+      <NavLink to = {'/profile/' + u.id}>
      <img src={u.photos.small !== null ? u.photos.small : "https://clck.ru/Pbd5H"}></img>
       </NavLink>
       <div className = {classes.usersName}>
@@ -35,13 +38,31 @@ let UsersPage = (props) => {
       </div>
       <div>
       {u.description}
-      </div>
+      </div>  
       <div>
-      </div>   
-      <div>
+        
         {u.followed
-          ? <button onClick = {FollowingStatus} value = {u.id}>unfollow</button>           
-          : <button onClick = {FollowingStatus} value = {u.id}>follow</button>                 
+         
+         
+          ? <button onClick = {()=>{
+          
+             axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {withCredentials : true, headers: {"API-KEY": "a4ba89cd-2d03-49f7-8ec7-417c749906a7"}}).
+              then(response => {
+      if (response.data.resultCode === 0) FollowingStatus(u.id)})
+       } }
+               value = {u.id}>unfollow</button> 
+          
+
+          
+          : <button onClick = {()=>{
+            
+              axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {withCredentials : true, headers: {"API-KEY": "a4ba89cd-2d03-49f7-8ec7-417c749906a7"}}).
+              then(response => {
+      if (response.data.resultCode === 0) FollowingStatus(u.id)})
+       } }
+            
+
+             value = {u.id}>follow</button>                 
           }
       </div>
     </div>})}
