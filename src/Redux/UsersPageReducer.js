@@ -4,13 +4,15 @@ const SET_USERS = "SET-USERS";
 const SET_CURRENT_PAGE = "SET-CURRENT-PAGE";
 const USERS_QUANTITY = "USERS-QUANTITY";
 const IS_LOADING = "IS-LOADING"
+const IS_FETCHING = "IS-FETCHING"
 
 let initialState = {
   users : [],
   currentPage : 1,
   usersQuantity : 0,
   usersInPage: 5,
-  isLoading : false
+  isLoading : false,
+  followingInProgress : false,
       }
 
 let UsersPageReducer = (state = initialState, action) => {
@@ -37,6 +39,10 @@ let UsersPageReducer = (state = initialState, action) => {
      }
      case IS_LOADING : {
        let stateCopy = {...state, isLoading: !state.isLoading}
+       return stateCopy
+     }
+     case IS_FETCHING : {
+       let stateCopy = {...state, followingInProgress: action.fetching}
        return stateCopy
      }
      default:
@@ -78,5 +84,12 @@ export const usersQuantity = (quantity) => {
 export const isLoading = (loading) => {
   return {
     type: IS_LOADING,  
+  }
+}
+
+export const isFetching = (fetching) => {
+  return {
+    type: IS_FETCHING,  
+    fetching: fetching,
   }
 }
