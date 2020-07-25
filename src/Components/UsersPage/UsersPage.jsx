@@ -2,14 +2,11 @@ import React from 'react';
 import classes from './UsersPage.module.css'
 import {NavLink} from 'react-router-dom'
 import * as axios from 'axios' 
+//import {followThunk, unfollowThunk} from '../../Redux/UsersPageReducer.js'
 
 let UsersPage = (props) => {
-  let FollowingStatus = (value) => {
-    console.log('loopends')
-    props.changeFollowingStatus(value)
-    props.isFetching(false)
-  } 
-  
+
+  debugger
   let pagesArray = []
  
   let pagesQuantity = Math.ceil(props.usersQuantity/props.usersInPage);  
@@ -41,27 +38,13 @@ let UsersPage = (props) => {
       <div>
         
         {u.followed
-         
-         
-          ? <button disabled = {props.followingInProgress} onClick = {()=>{
-             props.isFetching(true)
-             axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {withCredentials : true, headers: {"API-KEY": "a4ba89cd-2d03-49f7-8ec7-417c749906a7"}}).
-             then(response => {
-      if (response.data.resultCode === 0) FollowingStatus(u.id)})
-       } }
-               value = {u.id}>unfollow</button> 
-          
+          ? <button disabled = {props.followingInProgress} 
+                    onClick = {()=>{props.unfollowThunk(u.id)}}
+                    value = {u.id}>unfollow</button> 
 
-          
-          : <button disabled = {props.followingInProgress} onClick = {()=>{
-              props.isFetching(true)
-              axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {withCredentials : true, headers: {"API-KEY": "a4ba89cd-2d03-49f7-8ec7-417c749906a7"}}).
-              then(response => {
-      if (response.data.resultCode === 0) FollowingStatus(u.id)})
-       } }
-            
-
-             value = {u.id}>follow</button>                 
+          : <button disabled = {props.followingInProgress} 
+                    onClick = {()=>{props.followThunk(u.id)}}
+                    value = {u.id}>follow</button>                 
           }
       </div>
     </div>})}

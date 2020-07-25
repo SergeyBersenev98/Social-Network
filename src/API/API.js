@@ -24,4 +24,17 @@ export const getUsersAPI = (currentPage, usersInPage) => {
   .then(response => response.data)
 }
 
+export const follow = (userId) => {
+  debugger
+ return axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, 
+ {}, {withCredentials : true, 
+ headers: {"API-KEY": "a4ba89cd-2d03-49f7-8ec7-417c749906a7"}})
+}
+
+export const unfollow = (userId) => {
+  debugger
+  return axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, 
+  {withCredentials : true, 
+  headers: {"API-KEY": "a4ba89cd-2d03-49f7-8ec7-417c749906a7"}})
+}
 

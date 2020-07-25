@@ -1,4 +1,7 @@
 
+import {getUsersAPI} from '../API/API.js'
+import {follow, unfollow} from '../API/API.js'
+
 const CHANGE_FOLLOWING = "CHANGE-FOLLOWING";
 const SET_USERS = "SET-USERS";
 const SET_CURRENT_PAGE = "SET-CURRENT-PAGE";
@@ -16,12 +19,16 @@ let initialState = {
       }
 
 let UsersPageReducer = (state = initialState, action) => {
+  debugger
    switch (action.type) {
      case CHANGE_FOLLOWING : {
+       debugger
     let stateCopy = {...state, users: state.users.map( u => {
       if (u.id == action.id){
+        debugger
        return {...u, followed: !u.followed}
-      }else{  
+      }else{
+        debugger
       return u}})}
      return stateCopy
      }
@@ -51,45 +58,81 @@ let UsersPageReducer = (state = initialState, action) => {
     } 
  }
 
-export default UsersPageReducer;
+   // props.isFetching(false) 
 
 export const changeFollowingStatus = (id) => {
+  debugger
   return {
     type: CHANGE_FOLLOWING,
     id: id,
     }
   }
-
 export const setUsers = (users) => {
  return {
    type: SET_USERS,
    users: users
  } 
 }
-
 export const setCurrentPage = (number) => {
   return {
     type: SET_CURRENT_PAGE,
     number: number
   }
 }
-
 export const usersQuantity = (quantity) => {
   return {
     type: USERS_QUANTITY,
     quantity: quantity,
     }
   }
-
 export const isLoading = (loading) => {
   return {
     type: IS_LOADING,  
   }
 }
-
 export const isFetching = (fetching) => {
   return {
     type: IS_FETCHING,  
     fetching: fetching,
   }
 }
+
+export const getUsersThunkCreator = (currentPage, usersInPage =5)=> {
+  return (dispatch) => {
+      dispatch(isLoading('startLoading'))
+      dispatch(setCurrentPage(currentPage))
+      getUsersAPI(currentPage, usersInPage)
+      .then(data => {
+         dispatch(isLoading('stopLoading'))
+         dispatch(setUsers(data.items))
+         dispatch(usersQuantity(data.totalCount))
+                        }
+           )
+    }
+}
+export const unfollowThunk = (userId) => {
+  debugger
+  return (dispatch) => {
+  isFetching(true)
+  unfollow(userId)
+  .then(response => {
+   if (response.data.resultCode === 0) {
+     debugger
+     dispatch(changeFollowingStatus(userId))}})
+  }
+}
+export const followThunk = (userId) => {
+  debugger
+  return (dispatch) => {
+   isFetching(true)
+   follow(userId)
+   .then(response => {
+    if (response.data.resultCode === 0) {
+      debugger
+      dispatch(changeFollowingStatus(userId))}})
+  }
+}
+            
+
+
+export default UsersPageReducer;

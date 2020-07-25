@@ -1,45 +1,32 @@
 
 import React from 'react';
 import * as axios from 'axios' 
-import {changeFollowing, setUsers} from '../../Redux/UsersPageReducer.js'
+import {changeFollowing, setUsers, getUsersThunkCreator} from '../../Redux/UsersPageReducer.js'
 import {connect} from 'react-redux'
-import {UsersPageReducer, setCurrentPage, changeFollowingStatus, usersQuantity, isLoading, isFetching} from '../../Redux/UsersPageReducer.js'
+import {UsersPageReducer, setCurrentPage, changeFollowingStatus, usersQuantity, isLoading, isFetching, followThunk, unfollowThunk} from '../../Redux/UsersPageReducer.js'
 import UsersPage from './UsersPage.jsx'
 import Loading from '../Common/loading.jsx'
 import {getUsersAPI} from '../../API/API.js'
 
 class UsersPageAPI extends React.Component {
-  debugger
   constructor (props) {
   super (props)
 
   }
   
   componentDidMount() {
-    this.props.isLoading('startLoading')
-    getUsersAPI(this.props.state.currentPage, this.props.state.usersInPage)
-      .then(data => {
-         this.props.isLoading('stopLoading')
-         this.props.setUsers(data.items)
-         this.props.usersQuantity(data.totalCount)
-                        }
-           )
+    this.props.getUsersThunkCreator(this.props.currentPage, this.props.usersInPage);
 }
 
 
   onPageChanged = (page) => {
-    this.props.isLoading('startLoading')
-    this.props.setCurrentPage(page)
-    getUsersAPI(page, this.props.state.usersInPage)
-      .then(data => {
-        this.props.isLoading('stopLoading')    
-        this.props.setUsers(data.items)
-                        }
-           )
+    this.props.getUsersThunkCreator(page, this.props.usersInPage);
+
 }
 
 
 render () {
+  debugger;
   return  (<div>
     {this.props.state.isLoading ? <Loading /> : null}
          <UsersPage usersQuantity = {this.props.state.usersQuantity}
@@ -50,7 +37,9 @@ render () {
                     onPageChanged = {this.onPageChanged}
                     followingStatus = {this.props.followingStatus}
                     isFetching = {this.props.isFetching}
-                    followingInProgress = {this.props.state.followingInProgress}/>
+                    followingInProgress = {this.props.state.followingInProgress}
+                    followThunk = {this.props.followThunk}
+                    unfollowThunk = {this.props.unfollowThunk}/>
     </div>)
   }
 }
@@ -73,7 +62,8 @@ let f1 = (state) => {
 
 
 const UsersPageContainer = connect(f1, {changeFollowingStatus, setUsers, setCurrentPage,
-                                        usersQuantity, isLoading, isFetching})(UsersPageAPI);
+                                        usersQuantity, isFetching,
+                                       getUsersThunkCreator, followThunk, unfollowThunk, changeFollowingStatus})(UsersPageAPI);
 
 export default UsersPageContainer;
 
