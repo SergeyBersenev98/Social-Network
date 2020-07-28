@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './Profile.module.css'
-
 import ProfileInfo from './ProfileInfo/ProfileInfo.jsx'
 import ToWritePostContainer from './Posts/ToWritePost/ToWritePostContainer.jsx'
 import URLProfileContainer from './ProfileContainer.jsx'
@@ -8,6 +7,7 @@ import URLProfileContainer from './ProfileContainer.jsx'
 
 
 const Profile = (props) => {  
+
   return(
       <div className={classes.profile}>
         <div>

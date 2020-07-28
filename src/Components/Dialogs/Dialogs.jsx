@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Dialogs.module.css'
-import {NavLink} from 'react-router-dom'
+import {NavLink, Redirect} from 'react-router-dom'
 import MessageItem from './MessageItem/MessageItem.jsx'
 import DialogItem from './DialogItem/DialogItem.jsx'
 import ToWriteMessage from './ToWriteMessage/ToWriteMessage.jsx'
@@ -10,6 +10,7 @@ const Dialogs = (props) => {
 let DialogsRender = props.DialogsRender.map(d => <DialogItem name={d.name} ava={d.ava} id={d.id} />);
 let MessagesRender = props.MessagesRender.map(m => <MessageItem text={m.message} />)
 
+if (!props.isAuth) return <Redirect to = {'/Login'} />
   
   return(
     <div className={classes.chatsAndMassages}>

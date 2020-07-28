@@ -19,16 +19,12 @@ let initialState = {
       }
 
 let UsersPageReducer = (state = initialState, action) => {
-  debugger
    switch (action.type) {
      case CHANGE_FOLLOWING : {
-       debugger
     let stateCopy = {...state, users: state.users.map( u => {
       if (u.id == action.id){
-        debugger
        return {...u, followed: !u.followed}
       }else{
-        debugger
       return u}})}
      return stateCopy
      }
@@ -61,7 +57,6 @@ let UsersPageReducer = (state = initialState, action) => {
    // props.isFetching(false) 
 
 export const changeFollowingStatus = (id) => {
-  debugger
   return {
     type: CHANGE_FOLLOWING,
     id: id,
@@ -111,24 +106,20 @@ export const getUsersThunkCreator = (currentPage, usersInPage =5)=> {
     }
 }
 export const unfollowThunk = (userId) => {
-  debugger
   return (dispatch) => {
   isFetching(true)
   unfollow(userId)
   .then(response => {
    if (response.data.resultCode === 0) {
-     debugger
      dispatch(changeFollowingStatus(userId))}})
   }
 }
 export const followThunk = (userId) => {
-  debugger
   return (dispatch) => {
    isFetching(true)
    follow(userId)
    .then(response => {
     if (response.data.resultCode === 0) {
-      debugger
       dispatch(changeFollowingStatus(userId))}})
   }
 }

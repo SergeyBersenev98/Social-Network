@@ -5,8 +5,6 @@ import * as axios from 'axios'
 //import {followThunk, unfollowThunk} from '../../Redux/UsersPageReducer.js'
 
 let UsersPage = (props) => {
-
-  debugger
   let pagesArray = []
  
   let pagesQuantity = Math.ceil(props.usersQuantity/props.usersInPage);  

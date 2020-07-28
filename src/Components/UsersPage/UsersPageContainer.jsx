@@ -26,7 +26,6 @@ class UsersPageAPI extends React.Component {
 
 
 render () {
-  debugger;
   return  (<div>
     {this.props.state.isLoading ? <Loading /> : null}
          <UsersPage usersQuantity = {this.props.state.usersQuantity}

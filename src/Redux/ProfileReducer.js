@@ -1,4 +1,5 @@
 import DomRendering from '../index.js'
+import {getProfileAPI} from '../API/API.js'
 
 const SERVER_NEW_POST = 'SERVER-NEW-POST'
 const CHANGE_NEW_POST_TEXT = 'CHANGE-NEW-POST-TEXT'
@@ -66,3 +67,26 @@ export const allInfoAboutUserAC = (profile) => {
     profile : profile
   }
 }
+
+//THUNKS//
+
+export const getProfileThunk = (userId) => {
+  return (dispatch) =>{getProfileAPI(userId).then(response => {
+      this.props.allInfoAboutUserAC(response.data)}
+                        )
+                      }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

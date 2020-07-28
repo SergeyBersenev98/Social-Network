@@ -8,6 +8,7 @@ let f1 = (state) => {
     DialogsRender: state.Dialogs.DialogsData,
     MessagesRender: state.Dialogs.MessagesData,
     NewMessageText: state.Dialogs.NewMessageText,
+    isAuth: state.AuthorizationUser.isAuth
   }}
 
 let f2 = (dispatch) => {

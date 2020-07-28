@@ -1,3 +1,5 @@
+import {authMe} from '../API/API.js'
+
 const LOGIN = "LOGIN";
 
 
@@ -25,4 +27,32 @@ let AuthorizationReducer = (state = initialState, action) => {
 
 
 export const logining = (userId, login, email) => ({type: LOGIN, data: {userId, login, email}})
+
+//THUNKS//
+export const getAuthUserData = () => {
+  return (dispatch) => {
+        authMe().then(response => {
+      if (response.data.resultCode === 0) {
+        let {id, login, email} = response.data.data;
+        dispatch(logining(id, login, email))
+      } else {}
+                        }
+           )
+  }
+}
+
+
+
+
 export default AuthorizationReducer;
+
+
+
+
+
+
+
+
+
+
+
