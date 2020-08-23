@@ -1,47 +1,44 @@
-import {authMe, login, logout} from '../API/API.js'
-import {Redirect} from 'react-router-dom'
-import {stopSubmit} from 'redux-form'
-const LOGINING = "LOGINING";
+import {getAuthUserData} from './AuthorizationReducer.js'
+const INITIALIZED_SUCCESS = "INITIALIZED-SUCCESS";
 
 
 let initialState = {
-    userId : null,
-    login : null,
-    email : null,
-    isAuth : false
+    initialized : false
 }
 
 let AuthorizationReducer = (state = initialState, action) => {
    switch (action.type) {
-     case LOGINING : 
-      
+     case INITIALIZED_SUCCESS : 
      return {
        ...state,
-       ...action.data
-        
+       initialized : true  
      }
-  
             default:
        return state;
  }
 }
 
 
-export const logining = (userId, login, email,isAuth) => ({type: LOGINING, data: {userId, login, email,isAuth}})
+export const initializedSucces = () => (
+  {type: INITIALIZED_SUCCESS})
 
 //THUNKS//
-export const getAuthUserData = () => {
-  return (dispatch) => {
-       return authMe()
-         .then(response => {
-      if (response.data.resultCode === 0) {
-        let {id, login, email} = response.data.data;
-        dispatch(logining(id, login, email, true))
-      } else {dispatch(logining(null, null, null, false))}
-                        }
-           )
-  }
+
+export const initializeApp = () => (dispatch) => {
+  let promise = dispatch(getAuthUserData())
+
+  //dispatch(smthElse())
+  //dispatch(smthElse())
+  Promise.all([promise]).then(() => {
+    dispatch(initializedSucces())})
+  
+  
 }
+
+
+
+
+/*
 export const loginThunk = (email, password, rememberMe) => (dispatch) => {
   login(email, password, rememberMe).then(response => {
     if (response.data.resultCode === 0){
@@ -62,6 +59,7 @@ export const logoutThunk = () => (dispatch) => {
 
 
 
+*/
 
 export default AuthorizationReducer;
 

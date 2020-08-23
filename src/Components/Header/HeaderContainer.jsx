@@ -4,19 +4,20 @@ import {NavLink} from 'react-router-dom'
 import Header from './Header.jsx'
 import * as axios from 'axios' 
 import {connect} from 'react-redux'
-import {logining, getAuthUserData} from '../../Redux/AuthorizationReducer.js'
+import {logining, logoutThunk} from '../../Redux/AuthorizationReducer.js'
+import {logout} from '../../API/API.js'
 
 
 class HeaderContainer extends React.Component {
-  componentDidMount () {
-    this.props.getAuthUserData()
+/*  componentDidMount () {
+    this.props.getAuthUserData()*/
 /*    authMe().then(response => {
       if (response.data.resultCode === 0) {
         let {id, login, email} = response.data.data;
         this.props.logining(id, login, email)
       } else {}
                         }
-           )*/}
+           )}*/
 
     render () {
       return(
@@ -33,4 +34,4 @@ const mapStateToProps = (state) => ({
 
  
 
-export default connect(mapStateToProps, {logining, getAuthUserData}) (HeaderContainer);
+export default connect(mapStateToProps, {logoutThunk, logining }) (HeaderContainer);

@@ -10,7 +10,7 @@ const Dialogs = (props) => {
 let DialogsRender = props.DialogsRender.map(d => <DialogItem name={d.name} ava={d.ava} id={d.id} />);
 let MessagesRender = props.MessagesRender.map(m => <MessageItem text={m.message} />)
 
-if (!props.isAuth) return <Redirect to = {'/Login'} />
+
   
   return(
     <div className={classes.chatsAndMassages}>
@@ -19,7 +19,7 @@ if (!props.isAuth) return <Redirect to = {'/Login'} />
       </div>
       <div className={classes.massages}>
         {MessagesRender}
-        <ToWriteMessage NewMessageText={props.NewMessageText} sendNewMessageText={props.sendNewMessageText} MessagesData={props.MessagesData} changeNewMessageText={props.changeNewMessageText}/>
+        <ToWriteMessage sendNewMessageText={props.sendNewMessageText} MessagesData={props.MessagesData}/>
       </div>
     </div>
     

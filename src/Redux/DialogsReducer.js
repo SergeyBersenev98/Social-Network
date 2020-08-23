@@ -1,10 +1,9 @@
 import DomRendering from '../index.js'
 
-const CHANGE_NEW_MESSAGE_TEXT = 'CHANGE-NEW-MESSAGE-TEXT'
 const SEND_NEW_MESSAGE_TEXT = 'SEND-NEW-MESSAGE-TEXT'
 
 let initialState = {
-      NewMessageText : "",
+
       MessagesData : [{id:1, message:"Hi!"},
                       {id:2, message:"Sometext"},],
       DialogsData : [{id:1, name:"Andrew", ava:"https://clck.ru/Pbd5H"}, 
@@ -18,14 +17,11 @@ let initialState = {
 let DialodsReducer = (state = initialState, action) => {
    let stateCopy = {...state};
    switch (action.type) {
-     case CHANGE_NEW_MESSAGE_TEXT : {
-       stateCopy.NewMessageText = action.textFromUser
-       return stateCopy;
-     }
+
      case  SEND_NEW_MESSAGE_TEXT: {
+       debugger
        let basicMessage = {id:1, message: action.textFromUser}
        stateCopy.MessagesData = [ ...state.MessagesData, basicMessage]
-       stateCopy.NewMessageText = ""
        return stateCopy;
      }
      default:
@@ -35,12 +31,8 @@ let DialodsReducer = (state = initialState, action) => {
  }
 
 export default DialodsReducer;
-export const changeNewMessageTextActionCrerator = (text) => {  
-  return {
-    type: CHANGE_NEW_MESSAGE_TEXT,
-    textFromUser: text,
-    }
-  }
+
+  
 export const sendNewMessageTextActionCrerator = (text) => {
   return {
     type: SEND_NEW_MESSAGE_TEXT,

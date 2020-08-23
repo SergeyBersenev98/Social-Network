@@ -1,24 +1,41 @@
 import React from 'react';
-
-
+import {Field, reduxForm} from 'redux-form'
+import {required, maxLengthCreator} from '../../Utils/Validators/Validator.js'
+import {Textarea} from '../../Common/FormControls.jsx'
 const ToWriteMessage = (props) => {
-let newMessageElement = React.createRef();
+  
+const addNewMessage = (values) => {props.sendNewMessageText(values.newMessageBody)} //newMessageBody - cause it's name of Field (20str)
 
-  let changeNewMessage = ()=>{
-    let text = newMessageElement.current.value;
-    props.changeNewMessageText(text)
-    }
-
-  let sendNewMessage = () => {
-    let text = newMessageElement.current.value;
-    props.sendNewMessageText(text)
-  }
   return(
     <div>
-     <textarea ref={newMessageElement} onChange = {changeNewMessage} value = {props.NewMessageText}></textarea> 
-     <button onClick = {sendNewMessage}>Write a messge</button>
+      <AddMessageFormRedux onSubmit={addNewMessage}/>
     </div>
   )
 }
 
+const maxLength50 = maxLengthCreator(50)
+
+const addMessageForm = (props) => {
+  return ( 
+     <form onSubmit = {props.handleSubmit}>
+      <div>
+       <Field component = {Textarea} name = "newMessageBody" 
+              placeholder = "Enter your message" validate = {[required, maxLength50]}/>
+      </div>
+      <div>
+       <button>Send a messge</button>
+       </div>
+     </form>
+)
+}
+
+const AddMessageFormRedux = reduxForm({
+  form: "dialogsAddMessageForm"
+})(addMessageForm)
+
 export default ToWriteMessage;
+
+
+
+
+

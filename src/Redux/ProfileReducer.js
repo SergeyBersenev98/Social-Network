@@ -1,41 +1,39 @@
 import DomRendering from '../index.js'
-import {getProfileAPI} from '../API/API.js'
+import {getProfileAPI, getStatusAPI, updateStatusAPI} from '../API/API.js'
 
-const SERVER_NEW_POST = 'SERVER-NEW-POST'
-const CHANGE_NEW_POST_TEXT = 'CHANGE-NEW-POST-TEXT'
+const TO_ADD_POST = 'TO-ADD-POST'
 const ALL_INFO_ABOUT_USER = 'ALL-INFO-ABOUT-USER'
+const SET_STATUS = 'SET-STATUS'
 
 let initialState = {
       PostsData : [{text: "POST: Hi!"},
                    {text: "POST: Sometext"},
                    {text: "POST: Sometext"},],
-      NewPostText :  "",
-  
+
       Profile : " ",
+  status: ""
 }
     
 
 let ProfileReducer = (state = initialState, action) => {
   switch (action.type) {  
       
-    case SERVER_NEW_POST : {
+    case TO_ADD_POST : {
       let basicPost = { text: action.postFromUser }; 
       return {
         ...state, 
-        NewPostText : "",
         PostsData: [basicPost, ...state.PostsData]    
         }
     }
-      
-    case CHANGE_NEW_POST_TEXT : {  
-      let stateCopy = {...state, NewPostText: action.textFromUser }
-      return stateCopy
-      }
       
       case ALL_INFO_ABOUT_USER : {
         let stateCopy = {...state, Profile: action.profile}
         return stateCopy
       }
+    case SET_STATUS : {
+      let stateCopy = {...state, status: action.status}
+      return stateCopy
+    }
       
         default:
       return state;
@@ -46,19 +44,12 @@ let ProfileReducer = (state = initialState, action) => {
   
   
 
-  
-export default ProfileReducer;
 
-export const serverNewPostActionCrerator = (text) => {
+
+export const toAddPost = (text) => {
   return {
-    type: SERVER_NEW_POST,
+    type: TO_ADD_POST,
     postFromUser: text
-  }
-}
-export const changeNewPostTextActionCrerator = (text) => {
-  return {
-    type: CHANGE_NEW_POST_TEXT,
-    textFromUser: text
   }
 }
 export const allInfoAboutUserAC = (profile) => {
@@ -67,8 +58,13 @@ export const allInfoAboutUserAC = (profile) => {
     profile : profile
   }
 }
+export const setStatus = (status) => {
+  return {
+  type: SET_STATUS,
+  status: status
+}
+}
 
-//THUNKS//
 
 export const getProfileThunk = (userId) => {
   return (dispatch) =>{getProfileAPI(userId).then(response => {
@@ -76,11 +72,26 @@ export const getProfileThunk = (userId) => {
                         )
                       }
 }
+export const getStatus = (userId) => {
+  return (dispatch) => {getStatusAPI(userId).then(response => {
+    dispatch(setStatus(response.data))
+  })}
+}
 
+export const updateStatus = (status) => {
+  return (dispatch) => {updateStatusAPI(status).then( response => {
+    console.log(response)
+    if (response.data.resultCode === 0) {getStatusAPI(9365).then(response => {
+    dispatch(setStatus(response.data))
+  })
+   // dispatch(setStatus(response.data))
+  }}
+)}
+}
 
-
-
-
+                                                     //THUNKS
+   
+export default ProfileReducer;
 
 
 

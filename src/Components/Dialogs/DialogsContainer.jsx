@@ -1,24 +1,30 @@
 import React from 'react';
 import Dialogs from './Dialogs.jsx'   
-import {changeNewMessageTextActionCrerator, sendNewMessageTextActionCrerator} from '../../Redux/DialogsReducer.js'
+import {sendNewMessageTextActionCrerator} from '../../Redux/DialogsReducer.js'
 import {connect} from 'react-redux'
+import {AuthRedirect} from '../../HOC/AuthRedirect.js'
+import {compose} from 'redux'
+
+let AuthRedirectComponent = AuthRedirect(Dialogs)
+
 
 let f1 = (state) => {
   return{
     DialogsRender: state.Dialogs.DialogsData,
     MessagesRender: state.Dialogs.MessagesData,
     NewMessageText: state.Dialogs.NewMessageText,
-    isAuth: state.AuthorizationUser.isAuth
   }}
 
 let f2 = (dispatch) => {
   return{
-    changeNewMessageText: (text) => {dispatch(changeNewMessageTextActionCrerator(text))},
     sendNewMessageText: (text) => {dispatch(sendNewMessageTextActionCrerator(text))}
   }}
 
 
-const DialogsContainer = connect(f1, f2)(Dialogs);
+const DialogsContainer = connect(f1, f2)(AuthRedirectComponent);
 
 
-export default DialogsContainer;
+export default compose(
+  connect(f1, f2),
+  AuthRedirect,
+)(Dialogs);
