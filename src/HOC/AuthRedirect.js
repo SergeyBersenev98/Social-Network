@@ -2,6 +2,8 @@ import {Redirect} from 'react-router-dom'
 import React from 'react';
 import {connect} from 'react-redux'
 
+/*This component redirect to login*/
+
 let f1ForRedirect = (state) => ({
   isAuth: state.AuthorizationUser.isAuth
 })
@@ -16,7 +18,5 @@ export const  AuthRedirect = (Component) => {
   let ConnectedAuthRedirectComponent = connect(f1ForRedirect)(RedirectComponent)
     return ConnectedAuthRedirectComponent
 }
-
-
 
 export default AuthRedirect;

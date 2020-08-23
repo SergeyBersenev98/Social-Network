@@ -1,16 +1,27 @@
 import React from 'react';
 import classes from './Header.module.css'
 import {NavLink} from 'react-router-dom'
-
+import logoutImage from '../Common/images.png'
+import logotypeImage from '../Common/unnamed.jpg'
 
 const Header = (props) => { 
   return(
     <header className={classes.header}>
-      <img src="https://c-ash.smule.com/sf/s27/arr/99/a8/43530006-4fe8-4668-ac6b-c68b9a250978_1024.jpg"></img>
-      <div className = {classes.loginBlock}>
+      <div className={classes.logo}>
+        <img src={logotypeImage} alt = "logotype"/>
+      </div>
+      <div className = {classes.TS}>Twilight Sparkle</div>
+      <div className = {classes.TSmini}>social network</div>
+      <div className = {classes.loginBlock}>  
       {props.isAuth 
-          ? <div>{props.login} - <button onClick = {props.logoutThunk}>Logout</button></div> 
-          : <NavLink to ={'/login'}>Login</NavLink>}
+          ? <div className = {classes.logout}>
+            <div>
+              {props.login} 
+            </div>
+              <img onClick = {props.logoutThunk} src ={logoutImage} alt = "logout">
+              </img>
+            </div> 
+          : <NavLink to ={'/login'}><button>Login</button></NavLink>}
          </div>
     </header>
   )

@@ -1,11 +1,109 @@
-
-.usersPage img {
-  height: 40px;
-  width: 40px;
-  border-radius: 30px;
+.mainBorder {
+  color:#363b74;
+  position: relative;
+  border-radius: 10px;
+  height: 75vh;
+  box-shadow: rgba(0,20,50,.9) 0 0 7px;
 }
 
-.currentPage {
+.mainBorder h1{
+  border-color: cornflowerblue;
+  border-radius: 10px 10px 0px 0px;
+  height: 60px;
+  margin: -1px;
+  background: #363b74;
+  color: #e1d7e7;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.mainBorder h2{
+    display: flex;
+  justify-content: center;
+ 
+}
+
+.mainForm {
+  margin-left: 50vh;
+  position: absolute;
+  border-radius: 10px;
+  height: 50vh;
+  width: 370px;
+  box-shadow: rgba(0,20,50,.9) 0 0 6px;
+}
+
+.mainForm h1 {
   font-size: 20px;
-  color:darkmagenta;
+  border-radius: 10px 10px 0px 0px;
+  height: 30px;
+  width: 350px;
+  margin: 0px;
+  background: #e1d7e7;
+  color: #363b74;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  
+}
+
+.mainForm div {
+  font-size: 18px;
+  text-align: center;
+}
+
+.mainForm div div{
+  margin: 0px 0px 10px 0px;
+ display: flex;
+  justify-content: center;
+}
+
+.mainFormLoginInput{
+    border-radius: 7px;
+  border-color: #b39cc4;
+  height: 30px;
+  margin-left: 48px
+}
+
+.mainFormPasswordInput{
+  border-radius: 7px;
+    border-color: #b39cc4;
+    height: 30px;
+  margin-left: 17px
+}
+
+.mainFormButton {
+
+  display: flex;
+justify-content: center;
+}
+
+.mainForm button {
+height: 50px;
+    background-color: #b39cc4;
+  font-size: 30px;
+  color: #363b74;
+  margin-left: 30px;
+  margin-right: 10px;
+  margin-top: 3px;
+  position: relative;
+  text-decoration: none;
+  padding: .2em 2em;
+  border-radius: 10px;
+  border-color: #b39cc4;
+  outline: none;
+ background-image: linear-gradient(45deg, rgba(157,107,157,.0) 10%, rgba(157,107,157,.5), rgba(157,107,157,.0) 90%);
+  background-repeat: no-repeat;
+  background-size: 200% 100%, auto;
+  background-position: 200% 0, 0 0;
+}
+
+.mainForm button:active {
+  top: 1px;
+  box-shadow: none;
+}
+
+.mainForm button:hover {
+  transition: .5s linear;
+  background-position: -200% 0, 0 0;
 }

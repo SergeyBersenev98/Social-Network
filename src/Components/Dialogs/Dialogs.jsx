@@ -1,28 +1,23 @@
 import React from 'react';
 import classes from './Dialogs.module.css'
-import {NavLink, Redirect} from 'react-router-dom'
-import MessageItem from './MessageItem/MessageItem.jsx'
 import DialogItem from './DialogItem/DialogItem.jsx'
-import ToWriteMessage from './ToWriteMessage/ToWriteMessage.jsx'
-import DialogsContainer from './DialogsContainer.jsx'                            
+import ToWriteMessage from './ToWriteMessage/ToWriteMessage.jsx'                            
+import MessageNumber from './MessageNumber.jsx'
 
+ 
 const Dialogs = (props) => {
-let DialogsRender = props.DialogsRender.map(d => <DialogItem name={d.name} ava={d.ava} id={d.id} />);
-let MessagesRender = props.MessagesRender.map(m => <MessageItem text={m.message} />)
-
-
-  
+  let DialogsRender = props.DialogsRender.map(d => <DialogItem name={d.name} ava={d.ava} id={d.id} key={d.id} />);                             
+  let MessagesRender = props.DialogsRender.map(m => <MessageNumber m = {m} key = {m.id}/>)
   return(
     <div className={classes.chatsAndMassages}>
       <div className={classes.chats}>
         {DialogsRender}
       </div>
-      <div className={classes.massages}>
-        {MessagesRender}
+      <div className={classes.messages}>
         <ToWriteMessage sendNewMessageText={props.sendNewMessageText} MessagesData={props.MessagesData}/>
+        {MessagesRender}
       </div>
-    </div>
-    
+    </div> 
   )
 }
 

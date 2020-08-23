@@ -21,11 +21,11 @@ let initialState = {
 let UsersPageReducer = (state = initialState, action) => {
    switch (action.type) {
      case CHANGE_FOLLOWING : {
-    let stateCopy = {...state, users: state.users.map( u => {
-      if (u.id == action.id){
-       return {...u, followed: !u.followed}
-      }else{
-      return u}})}
+       let stateCopy = {...state, users: state.users.map( u => {
+         if (u.id === action.id){
+           return {...u, followed: !u.followed}
+        }else{
+           return u}})}
      return stateCopy
      }
      case SET_USERS : {
@@ -53,8 +53,6 @@ let UsersPageReducer = (state = initialState, action) => {
       
     } 
  }
-
-   // props.isFetching(false) 
 
 export const changeFollowingStatus = (id) => {
   return {
@@ -91,7 +89,7 @@ export const isFetching = (fetching) => {
     fetching: fetching,
   }
 }
-
+//THUNKS
 export const getUsersThunkCreator = (currentPage, usersInPage =5)=> {
   return (dispatch) => {
       dispatch(isLoading('startLoading'))
@@ -124,6 +122,4 @@ export const followThunk = (userId) => {
   }
 }
             
-
-
 export default UsersPageReducer;

@@ -7,26 +7,33 @@ import {connect} from 'react-redux'
 import {loginThunk} from '../../Redux/AuthorizationReducer'
 import {Redirect} from 'react-router-dom'
 import errorStyle from '../Common/FormControl.module.css'
-//import {AuthorizationUser} from '../../Redux/ReduxStore.js'
 
-const LoginForm = (props) => { 
+const LoginForm = (props) => {
   return (
-    <form onSubmit = {props.handleSubmit}>
+    <form className = {classes.mainForm} onSubmit = {props.handleSubmit}>
+      <h1>login and password</h1>
       <div>
-        <Field placeholder = {"Login"} name = {"login"} component={Input} validate={[required]}/>
-      </div>
+        <div>
+          <div>Login</div>
+          <Field placeholder = {"Login"} name = "login" component={Input} validate={[required]} 
+            className = {classes.mainFormLoginInput}/>
+       </div>
       <div>
-        <Field placeholder = {"Password"} name = {"password"} component={Input} validate={[required]} type = {"password"}/>
+        <div>Password</div>
+        <Field placeholder = {"Password"} name = "password" component={Input} validate={[required]} type = {"password"}
+          className = {classes.mainFormPasswordInput}/>
       </div>
       <div>
         <Field type = {"checkbox"} name = {"rememberMe"} component={Input} />
-        remember me
+        <div>remember me</div>
       </div>
-      {props.error && <div className = {errorStyle.formSummaryError}>
-      {props.error}
       </div>
-        }
-      <div>
+      {props.error && 
+        <div className = {errorStyle.formSummaryError}>
+          {props.error}
+        </div>
+      }
+      <div className = {classes.mainFormButton}>
         <button>Login!</button>
       </div>
     </form> 
@@ -48,10 +55,11 @@ const Login = (props) => {
   }
   
   return (
-  <div>
-    <h1>Login here</h1>
-    <LoginReduxForm onSubmit = {onSubmit}/>
-  </div>
+    <div className = {classes.mainBorder}>
+      <h1>Welcome!</h1>
+      <h2>To start working with TS social network enter your username and password</h2>
+      <LoginReduxForm onSubmit = {onSubmit}/>
+    </div>
     )
 }
 

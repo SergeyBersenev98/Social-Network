@@ -1,0 +1,20 @@
+
+
+.field {
+  padding: 8px;
+  font-size: 18px;
+  border: 3px #b39cc4 solid;
+  width: 95%;
+  height: 10vh;
+  border-radius: 7px;
+  color: #48275F;
+  margin-top: 14px;
+  background-color: white;
+}
+
+button {
+  height: 24px;
+  width: 96%;
+  font-size: 18px;
+  margin-bottom: 30px;
+}

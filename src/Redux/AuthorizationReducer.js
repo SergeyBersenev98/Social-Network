@@ -1,8 +1,7 @@
 import {authMe, login, logout} from '../API/API.js'
-import {Redirect} from 'react-router-dom'
 import {stopSubmit} from 'redux-form'
-const LOGINING = "LOGINING";
 
+const LOGINING = "LOGINING";
 
 let initialState = {
     userId : null,
@@ -13,19 +12,15 @@ let initialState = {
 
 let AuthorizationReducer = (state = initialState, action) => {
    switch (action.type) {
-     case LOGINING : 
-      
-     return {
-       ...state,
-       ...action.data
-        
+     case LOGINING :  
+       return {
+         ...state,
+         ...action.data 
      }
-  
-            default:
+     default:
        return state;
  }
 }
-
 
 export const logining = (userId, login, email,isAuth) => ({type: LOGINING, data: {userId, login, email,isAuth}})
 
@@ -59,9 +54,6 @@ export const logoutThunk = () => (dispatch) => {
     }
   })
 }
-
-
-
 
 export default AuthorizationReducer;
 

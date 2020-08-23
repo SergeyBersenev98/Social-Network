@@ -6,17 +6,11 @@ const instance = axios.create({
   headers: {"API-KEY": "a4ba89cd-2d03-49f7-8ec7-417c749906a7"}
 })
 
-   
-
-
-
 export const getUsersAPI = (currentPage, usersInPage) => {
   return instance.get(`users?page=
   ${currentPage}&count=${usersInPage}`)
   .then(response => response.data)
 }
-
-
 
 export const follow = (userId) => {
  return axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, 
@@ -53,6 +47,7 @@ export const updateStatusAPI = (status) => {
 }
 
 export const login = (email, password, rememberMe) => {
+  debugger
    return axios.post(`https://social-network.samuraijs.com/api/1.0/auth/login`, 
  {email, password, rememberMe}, {withCredentials : true, 
  headers: {"API-KEY": "a4ba89cd-2d03-49f7-8ec7-417c749906a7"}})
@@ -63,3 +58,22 @@ export const logout = () => {
   {withCredentials : true, 
   headers: {"API-KEY": "a4ba89cd-2d03-49f7-8ec7-417c749906a7"}})
 }
+
+export const saveProfileAPI = (profile) => {
+  return axios.put(`https://social-network.samuraijs.com/api/1.0/profile`,  
+                   profile, 
+  {withCredentials : true, 
+ headers: {"API-KEY": "a4ba89cd-2d03-49f7-8ec7-417c749906a7"}}) 
+}
+
+export function savePhotoAPI(photo){
+  const data = new FormData();
+  data.append("image", photo)
+  return axios.put(`https://social-network.samuraijs.com/api/1.0/profile/photo`, 
+ {"image": photo} , {withCredentials : true, 
+               headers: {"API-KEY": "a4ba89cd-2d03-49f7-8ec7-417c749906a7",
+                         'Content-Type' : 'multipart/form-data'}
+                                }
+                  )
+}
+

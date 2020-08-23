@@ -4,20 +4,17 @@ import './App.css';
 import HeaderContainer from './Components/Header/HeaderContainer.jsx'
 import Leftbar from './Components/Leftbar/Leftbar.jsx'
 import ProfileContainer from './Components/Content/ProfileContainer.jsx'
+import SettingsContainer from './Components/Settings/SettingsContainer.jsx'
 import UsersPageContainer from './Components/UsersPage/UsersPageContainer.jsx'
+import MusicContainer from './Components/Music/MusicContainer.jsx'
+import PicturesContainer from './Components/Pictures/PicturesContainer.jsx'
 import DialogsContainer from './Components/Dialogs/DialogsContainer.jsx'
-import {BrowserRouter, Route} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import Login from './Components/Login/Login.jsx'
-import {getAuthUserData} from './Redux/AuthorizationReducer.js'
 import {initializeApp} from './Redux/AppReducer.js'
 import Loading from './Components/Common/loading.jsx'
-   //21 str /:userId - it's mean 'url parametr'     '?' - it's mean? that parametr is not nessecary
 
-
-
-
-class App extends Component {
-  
+class App extends Component {  
     componentDidMount () {
     this.props.initializeApp()
     }
@@ -32,6 +29,9 @@ class App extends Component {
           <Route path = '/dialogs' render = {()=> <DialogsContainer />}/>
           <Route path = '/usersPage' render = {()=> <UsersPageContainer />}/>
           <Route path = '/login' render = {()=> <Login />}/>
+          <Route path = '/music' render = {()=> <MusicContainer />}/>
+          <Route path = '/settings' render = {() => <SettingsContainer />} />
+          <Route path = '/pictures' render = {() => <PicturesContainer />} />
         </div>  
       </div>
     );

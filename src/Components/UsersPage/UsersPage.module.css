@@ -1,11 +1,117 @@
 
 .usersPage img {
-  height: 40px;
-  width: 40px;
-  border-radius: 30px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50px;
+  margin: 6px;
+  border: 3px #b39cc4 solid;
+    position: relative;
+  z-index: 0;
 }
 
 .currentPage {
   font-size: 20px;
   color:darkmagenta;
+    position: relative;
+  z-index: 0;
+}
+
+ button {
+   margin-left: 5px;
+   margin-right: 5px;
+  opacity: 0.6;
+  background-color: #b39cc4;
+  font-size: 26px;
+  color: #363b74;
+  position: relative;
+  text-decoration: none;
+  padding: .0em 3em;
+  border-radius: 10px;
+  border-color: #b39cc4;
+  outline: none;
+ background-image: linear-gradient(45deg, rgba(157,107,157,.0) 10%, rgba(157,107,157,.5), rgba(157,107,157,.0) 90%);
+  background-repeat: no-repeat;
+  background-size: 200% 100%, auto;
+  background-position: 200% 0, 0 0;
+     position: relative;
+  z-index: 0;
+}
+
+button:active {
+  opacity: 1;
+  top: 1px;
+  box-shadow: none;
+}
+
+button:hover {
+  opacity: 1;
+  transition: .4s linear;
+  background-position: -200% 0, 0 0;
+}
+
+.previousAndFutures{
+  font-size: 24px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+    position: relative;
+  z-index: 0;
+}
+
+.allPage {
+  color: #6f3b7d;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 7%;
+  padding-right: 7%;
+    border: 3px #b39cc4 solid;
+  margin-left: 50px;
+  margin-right: 80px;
+  margin-bottom: 100px;
+     border-radius: 7px;
+    position: relative;
+  z-index: 0;
+}
+
+.usersPage{
+  
+    padding-top: 10px;
+  padding-bottom: 0px;
+  padding-left: 8%;
+  padding-right: 8%;
+    border: 3px #b39cc4 solid;
+  font-size: 46px;
+  color: #48275F;
+  border-radius: 7px;
+margin: auto;
+    
+}
+
+.usersPage:hover{
+  margin: auto;
+ background: white;
+  transition: .4s linear;
+  box-shadow: 2px 2px 4px 4px #48275F;
+  position: relative;
+  z-index: 1;
+}
+
+.usersName div{
+  margin: -20px;
+  margin-bottom: -20px;
+  margin-top: 
+}
+.usersName button{
+}
+
+.usersName {
+  align-content: center;
+  margin: -10px;
+ 
+}
+.nameAndAva img{
+  margin-top: 20px;
+  margin-bottom: -10px;
+  margin-right: 25%;
+  align-content: flex-start;
 }
