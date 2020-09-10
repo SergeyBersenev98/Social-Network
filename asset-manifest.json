@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8f2f481c.chunk.css",
+    "main.js": "/static/js/main.6a5f080a.chunk.js",
+    "main.js.map": "/static/js/main.6a5f080a.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.f16ea130.js",
+    "runtime-main.js.map": "/static/js/runtime-main.f16ea130.js.map",
+    "static/js/2.9c8a211f.chunk.js": "/static/js/2.9c8a211f.chunk.js",
+    "static/js/2.9c8a211f.chunk.js.map": "/static/js/2.9c8a211f.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.e7be6f00d3bd7ee9baa243572c92b218.js": "/precache-manifest.e7be6f00d3bd7ee9baa243572c92b218.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.8f2f481c.chunk.css.map": "/static/css/main.8f2f481c.chunk.css.map",
+    "static/js/2.9c8a211f.chunk.js.LICENSE.txt": "/static/js/2.9c8a211f.chunk.js.LICENSE.txt",
+    "static/media/Profile.module.css": "/static/media/AlexBrush.c8b7ff20.ttf",
+    "static/media/ava.jpg": "/static/media/ava.fa099024.jpg",
+    "static/media/cityDay.png": "/static/media/cityDay.10008846.png",
+    "static/media/cityNight.png": "/static/media/cityNight.5e2312aa.png",
+    "static/media/loading.gif": "/static/media/loading.8f02038e.gif",
+    "static/media/loadingTwilight.gif": "/static/media/loadingTwilight.bba4c3ec.gif",
+    "static/media/noAva.jpg": "/static/media/noAva.c4616ee9.jpg",
+    "static/media/nophoto.PNG": "/static/media/nophoto.fddc07da.PNG",
+    "static/media/nophotosmall.PNG": "/static/media/nophotosmall.115d6756.PNG",
+    "static/media/unnamed.jpg": "/static/media/unnamed.e24851d8.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f16ea130.js",
+    "static/js/2.9c8a211f.chunk.js",
+    "static/css/main.8f2f481c.chunk.css",
+    "static/js/main.6a5f080a.chunk.js"
+  ]
+}
