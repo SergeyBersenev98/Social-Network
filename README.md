@@ -12,10 +12,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 To run this project, install it localy using npm:
 
 ```shell
-$ git clone https://github.com/SergeyBersenev98/SergeyBersenev98
-$ cd react-avito/
+$ git clone https://github.com/SergeyBersenev98/SergeyBersenev98.github.io
+$ cd ./SergeyBersenev98.github.io
 $ npm install
-$ npm run dev
+$ npm start
 ```
 
 Then open your browser on http://localhost:3000/
