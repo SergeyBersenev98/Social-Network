@@ -1,0 +1,92 @@
+.mainBorder {
+  border: 3px #b39cc4 solid;
+  margin-left: 4%;
+  margin-right: 4%;
+  border-radius: 7px;
+  align-content: center;
+  width: calc(90% - 320px)
+}
+
+.mainBorder button {
+  font-size: 40vw;
+  margin: 0px;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  margin-left: 2%;
+  display: flex;
+  height: auto;
+  background-color: #363b74;
+  font-size: 28px;
+  color: #b39cc4;
+  position: relative;
+  text-decoration: none;
+  border-radius: 10px;
+  border-color: #b39cc4;
+  outline: none;
+  background-image: linear-gradient(45deg, rgba(157,107,157,.0) 10%, rgba(157,107,157,.5), rgba(157,107,157,.0) 90%);
+  background-repeat: no-repeat;
+  background-size: 200% 100%, auto;
+  background-position: 200% 0, 0 0;
+}
+
+.header button:active {
+  top: 1px;
+  box-shadow: none;
+}
+
+.header button:hover {
+  transition: .5s linear;
+  background-position: -200% 0, 0 0;
+}
+
+.mainBorder img {
+  margin-top: 100px;
+  width: 70px;
+  height: 60px;
+}
+
+.mainBorder div {
+  text-align: center;
+}
+
+.loading{
+  color:#363b74;
+}
+
+.infoForEmployer{
+  background-color: rgb(207, 204, 245);
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 3vh;
+  padding-bottom: 17px;
+  padding-top: 5px;
+  padding-left: 5%;
+  padding-right: 5%;
+  border-radius: 7px;
+  color: rgb(19, 18, 41);
+  font-style: italic;
+}
+
+h6{
+  text-align: right;
+  color: royalblue;
+  margin: 0;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+@media screen and (max-width: 761px) {
+  .mainBorder button{
+    font-size: 16px;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+  }
+
+  .mainBorder {
+    width: calc(90%);
+    height: 520px;
+  }
+}
+
+
+

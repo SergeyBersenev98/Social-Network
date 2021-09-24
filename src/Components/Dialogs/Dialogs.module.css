@@ -1,0 +1,57 @@
+.chatsAndMassages {
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+}
+
+.chatsAndMassages{
+  opacity: 0.8;
+  margin-right: 0px;
+  margin-bottom:100px;
+  border: 3px #b39cc4 solid;
+  border-radius: 7px;
+}
+
+.chatsAndMassages > div:last-child > div:first-child{
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  width: 90%;
+}
+
+.chatsAndMassages > div:first-child{
+  background-color: #e1d7e7;
+}
+
+.me {
+  padding: 8px;
+  font-size: 18px;
+  margin: 18px;
+  border-radius: 7px;
+  color: #48275F;
+  margin-left: 150px;
+  text-align: right;
+  background-color: #b39cc4;
+}
+
+.me img{
+  width: 100%;
+  height: 100%
+}
+.no {
+  padding: 8px;
+  font-size: 18px;
+  margin: 18px;
+  border-radius: 7px;
+  color: #48275F;
+  margin-right: 150px;
+  background-color:  #e1d7e7;
+}
+
+@media screen and (max-width: 760px) {
+.chatsAndMassages {
+  grid-template-columns:none;
+  grid-template-rows: 0fr 0fr;
+}
+
+
+}
