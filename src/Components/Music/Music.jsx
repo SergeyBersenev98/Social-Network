@@ -36,7 +36,7 @@ class Music extends React.Component {
 
 
 
-    } else {isPlayerReady()}}, 1500) 
+    } else {isPlayerReady()}}, 2000) 
   }
   isPlayerReady()
 
@@ -73,7 +73,7 @@ render(){
         ? <button onClick = {this.changeRightbarVisability}>Never remove rightbar : yes</button>
         : <button onClick = {this.changeRightbarVisability}>Never remove rightbar : no</button>}
 <div className={classes.infoForEmployer}>
-  <h6>Infos for employer</h6>
+  <h6>Some info for employer</h6>
 Music Player loads only once either for desktop, either for mobile version.
 So its necessary to reload page to wiev it in another resolution</div>
         {this.props.playerWasAdded

@@ -8,9 +8,9 @@ const SAVE_PROFILE = 'SAVE-PROFILE'
 const LIKE = 'LIKE'
 
 let initialState = {
-    PostsData : [{text: "Даже злейшие из врагов могут стать друзьями. Нужно понимать друг друга и идти на уступки. Нужно уметь делиться договориться.", likes: 4, wasLiked: false, id: 2},
-                 {text: "Я узнала, что решение проблем может прийти оттуда, откуда этого меньше всего ждешь. Иногда хорошей мыслью бывает остановиться и прислушаться ко мнениям и взглядам своих друзей, даже если они могут показаться бессмысленными.", likes: 3, wasLiked: false, id:1},
-                 {text: "Когда пытаешься угодить всем, часто не получается угодить никому. Особенно себе.", likes: 7, wasLiked: false, id:0},],
+    PostsData : [{text: "Orbilius notus magister est. Puмri Romāni Orbilii magistri scholam frequentant. Orbilii schola privāta est. Nam Romāni scholas publĭcas non habent.", likes: 4, wasLiked: false, id: 2},
+                 {text: "Inter puĕros Horatius quoque est. Horatius Orbilium magistrum non amat. Nam Orbilius sevērus est et puмros plagis terrēre solet. Itгque puмri Orbilium magistrum plagōsum appellant.", likes: 3, wasLiked: false, id:1},
+                 {text: "Multi apud Graecos clari medĭci sunt. Primus Graecōrum medĭcus Aesculapius est, vir doctus, perītus et ingeniōsus. Postea Aesculapius medicōrum deus est. In libris Homēri de libмris Aesculapii legĭmus.", likes: 7, wasLiked: false, id:0},],
 
       Profile : " ",
       status: "",

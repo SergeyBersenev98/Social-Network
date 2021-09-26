@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Profile.module.css'
 import ProfileInfo from './ProfileInfo/ProfileInfo.jsx'
 import ProfileStatusWithHooks from './ProfileStatusWithHooks.jsx'
-import {Field, reduxForm} from 'redux-form'
+import {Field, reset, reduxForm} from 'redux-form'
 import {required, maxLengthCreator} from '../Utils/Validators/Validator.js'
 import {Textarea} from '../Common/FormControls.jsx'
 import ava from '../Common/ava.jpg'
@@ -21,8 +21,12 @@ const AddNewPost = (props) => {
   )
 }
 
+const afterSubmit = (result, dispatch) =>
+  dispatch(reset('NewPost'));
+
 const AddNewPostForm = reduxForm({
-  form : "NewPost"
+  form : "NewPost",
+  onSubmitSuccess: afterSubmit,
 })(AddNewPost)
 
 const Profile = React.memo (props => {  //React.memo == shouldComponentUpdate (in class)
