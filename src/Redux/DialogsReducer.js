@@ -20,11 +20,11 @@ let initialState = {
         {idAndName: {id:3, name:"Elena"}, id:3, name:"Elena", ava:" https://pbs.twimg.com/profile_images/684043952425709569/yCEyneCv_400x400.jpg", messages: [        
                           {owner: "me", text: "В первом сезоне исполняла роль исполнительного продюссера, во втором — консультирующего продюссера. На протяжении первого сезона общалась с фанатами и отвечала на их вопросы на своей страничке DeviantArt.", img: ""},
                           {owner: "no", text: "Вскоре после выхода последней серии первого сезона, Фауст заявила, что покидает сериал. Её роль во втором сезоне заметно уменьшилась, и теперь она (но не полностью) отвечает только за концепцию истории и сценарий, в то время как на протяжении первого сезона она отвечала за каждую деталь. ", img: ""}]},
-       {idAndName: {id:4, name:"Oleg"}, id:4, name:"Oleg", ava: "https://i.pinimg.com/originals/b2/67/fd/b267fd416ac8b4f8727dedef55ee88ab.png" , messages: [
+        {idAndName: {id:4, name:"Oleg"}, id:4, name:"Oleg", ava: "https://i.pinimg.com/originals/b2/67/fd/b267fd416ac8b4f8727dedef55ee88ab.png" , messages: [
                          {owner: "no", text: "Lacedaemonius quidam, cuius ne nomen quidem proditum est, mortem tantopere contempsit, ut, cum ad eam1 duceretur damnatus ab ephoris et esset vultu hilari atque laeto, dixissetque ei quidam inimicus: «Contemnisne leges Lycurgi?»3, responderit2: «Ego vero illi maximam gratiam habeo,", img: ""},
                          {owner: "no", text: "qui me eā poenā multaverit, quam sine mutuatione et sine versura possem dissolvere4.» O virum Sparta dignum!5 Ut mihi quidem, qui tam magno animo6 fuerit, innocens damnatus esse videatur7.", img: ""},
                          {owner: "me", text: "???", img: ""}]},
-       {idAndName: {id:5, name:"Jenna"}, id:5, name:"Jenna", ava: img, messages: [
+        {idAndName: {id:5, name:"Jenna"}, id:5, name:"Jenna", ava: img, messages: [
                         {owner: "me", text: `Компонент работает и импортируется, но почему-то возникает ошибка:
                         {
                         "resource": "/d: /projects/ 111111111/frontend/src/ components/Header/ Index.js",
@@ -32,7 +32,7 @@ let initialState = {
                         "code": "import/ no-unresolved",
                         "severity": 8,`, img: "https://i.ytimg.com/vi/qDnROJwDYqA/mqdefault.jpg"},
                         {owner: "no", text: "регистр букавок в названии файла проверьте", img: ""},]},
-      {idAndName: {id:6, name:"Kate"}, id:6, name:"Kate", ava: img, messages: [
+       {idAndName: {id:6, name:"Kate"}, id:6, name:"Kate", ava: img, messages: [
                         {owner: "me", text: "Hi!", img: ""},
                         {owner: "no", text: "Hi!", img: ""},]},
       ],
@@ -49,7 +49,7 @@ let DialodsReducer = (state = initialState, action) => {
        let stateCopy = JSON.parse(JSON.stringify(state));
        for(let i=0; i<50; i++){
          if (!!stateCopy.DialogsData[i]){
-          if(stateCopy.DialogsData[i].id == actionId){
+          if(stateCopy.DialogsData[i].id === Number(actionId)){
             stateCopy.DialogsData[i].messages.push({owner: "me", text: action.textFromUser, img: action.img})
            }
          }

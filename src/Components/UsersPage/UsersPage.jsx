@@ -18,7 +18,7 @@ let UsersPageWithHooks = (props) => {
   return (
     <div className = {classes.allPage}> 
           <div className={classes.infoForEmployer}>
-        <h6>Some info for employer</h6><i class="fas fa-info-circle"></i>
+        <h6>Some info for employer</h6><i className="fas fa-info-circle"></i>
         All users are real and were gotten from server. Click on their photo to see profile page.
 Click "follow" to add friend. Now you can open "Dialogs" and write some messges. 
           </div>

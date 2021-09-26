@@ -31,7 +31,7 @@ const ProfileInfo = (props) => {
           </div>
           {props.owner ? 
           <div className = {classes.infoForEmployer}>
-            <h6>Some info for employer</h6><i class="fas fa-info-circle"></i>
+            <h6>Some info for employer</h6><i className="fas fa-info-circle"></i>
 Click "edit". All this information will be sent on server and save there. Include status. 
 Unfortunately, server has no abilieties to save posts. Posts save localy and will be deleted after reloading.
           </div> : ""}
