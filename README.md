@@ -1,5 +1,5 @@
 # SergeyBersenev98.github.io
-Project of simple social netork
+Simple social netork (MAIN PROJECT)
 
 # Getting Started with Create React App
 
