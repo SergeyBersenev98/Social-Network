@@ -1,5 +1,6 @@
 # SergeyBersenev98.github.io
 Simple social network (MAIN PROJECT - react,redux)
+
 for quick viewing in PNG: https://www.dropbox.com/sh/9j6xw7bn5e5bn1g/AAB9Jz06pZxFbQQ17XlMn8JPa?dl=0
 
 # Getting Started with Create React App
